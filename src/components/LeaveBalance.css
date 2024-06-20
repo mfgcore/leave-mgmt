@@ -1,0 +1,56 @@
+/* src/components/LeaveBalance.css */
+.leave-balance {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+.leave-balance h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.leave-balance h3 {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.leave-balance table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leave-balance th,
+.leave-balance td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.leave-balance th {
+  background-color: rgba(0, 175, 170, 1); /* Updated header background colour */
+  color: white;
+}
+
+.leave-balance tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.leave-balance tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}

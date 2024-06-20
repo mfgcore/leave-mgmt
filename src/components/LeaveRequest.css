@@ -1,0 +1,123 @@
+/* src/components/LeaveRequest.css */
+.leave-request {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leave-request h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.leave-request form {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #666;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+input, select, textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+}
+
+.radio input {
+  margin-right: 5px;
+}
+
+button {
+  padding: 12px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button[type="button"] {
+  background-color: #f44336;
+  margin-left: 10px;
+}
+
+button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.upload-section {
+  border: 1px dashed #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.upload-section .form-group {
+  margin-bottom: 0;
+}
+
+.file-list p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}

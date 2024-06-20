@@ -1,0 +1,80 @@
+/* src/components/RequestOverview.css */
+.request-overview {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.heading h2 {
+  margin: 0;
+  color: #333;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+.request-overview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.request-overview th,
+.request-overview td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.request-overview th {
+  background-color: rgba(0, 175, 170, 1); /* Updated header background colour */
+  color: white;
+}
+
+.request-overview tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.request-overview tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .request-overview th:nth-child(2),
+  .request-overview th:nth-child(4),
+  .request-overview th:nth-child(6),
+  .request-overview td:nth-child(2),
+  .request-overview td:nth-child(4),
+  .request-overview td:nth-child(6) {
+    display: none;
+  }
+}
