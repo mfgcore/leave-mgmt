@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/leave-mgmt/static/css/main.400d3899.css",
+    "main.js": "/leave-mgmt/static/js/main.ab43a6e8.js",
+    "static/js/494.e45c8438.chunk.js": "/leave-mgmt/static/js/494.e45c8438.chunk.js",
+    "static/js/453.5821fda0.chunk.js": "/leave-mgmt/static/js/453.5821fda0.chunk.js",
+    "static/js/16.079a1b04.chunk.js": "/leave-mgmt/static/js/16.079a1b04.chunk.js",
+    "index.html": "/leave-mgmt/index.html",
+    "main.400d3899.css.map": "/leave-mgmt/static/css/main.400d3899.css.map",
+    "main.ab43a6e8.js.map": "/leave-mgmt/static/js/main.ab43a6e8.js.map",
+    "494.e45c8438.chunk.js.map": "/leave-mgmt/static/js/494.e45c8438.chunk.js.map",
+    "453.5821fda0.chunk.js.map": "/leave-mgmt/static/js/453.5821fda0.chunk.js.map",
+    "16.079a1b04.chunk.js.map": "/leave-mgmt/static/js/16.079a1b04.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.400d3899.css",
+    "static/js/main.ab43a6e8.js"
+  ]
+}
