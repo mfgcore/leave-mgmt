@@ -1,6 +1,6 @@
 // src/mockApi.js
-import { http, HttpResponse } from 'msw';
 import { setupWorker } from 'msw/browser';
+import { http, HttpResponse } from 'msw';
 
 // Define request handlers
 const handlers = [
@@ -32,7 +32,13 @@ const worker = setupWorker(...handlers);
 // Function to start the service worker
 export default function initializeMockApi() {
   console.log('Initializing Mock API...');
+  const isProduction = process.env.NODE_ENV === 'production';
+  const serviceWorkerUrl = isProduction ? '/leave-mgmt/mockServiceWorker.js' : '/mockServiceWorker.js';
+
   return worker.start({
+    serviceWorker: {
+      url: serviceWorkerUrl,
+    },
     onUnhandledRequest: 'bypass',
   }).then(() => {
     console.log('Mock API started');
