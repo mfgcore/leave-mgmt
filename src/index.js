@@ -9,12 +9,15 @@ import reportWebVitals from './reportWebVitals';
 // Log the environment variable to ensure it's being read correctly
 console.log('REACT_APP_USE_MOCK_API:', process.env.REACT_APP_USE_MOCK_API);
 
+const isProduction = process.env.NODE_ENV === 'production';
+const basename = isProduction ? '/leave-mgmt' : '/';
+
 const startApp = () => {
   const container = document.getElementById('root');
   const root = createRoot(container); // Use createRoot from react-dom/client
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <App />
       </BrowserRouter>
     </React.StrictMode>
