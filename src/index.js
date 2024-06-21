@@ -14,7 +14,7 @@ const startApp = () => {
   const root = createRoot(container); // Use createRoot from react-dom/client
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename='/leave-mgmt'>
         <App />
       </BrowserRouter>
     </React.StrictMode>
