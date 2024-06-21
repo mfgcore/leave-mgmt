@@ -17,7 +17,9 @@
     "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "cross-env NODE_ENV=test react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,11 +53,7 @@
       "public"
     ]
   },
-  "homepage": "https://mfgcore.github.io/leave-mgmt",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  }  
+  "homepage": "https://mfgcore.github.io/leave-mgmt"
 }
 
 
