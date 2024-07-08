@@ -8,6 +8,8 @@ import { UserProvider } from './UserContext';
 
 const basename = process.env.NODE_ENV === 'development' ? '/' : '/leave-mgmt';
 
+console.log('basename: ', basename);
+
 const startApp = () => {
   const container = document.getElementById('root');
   const root = createRoot(container); // Use createRoot from react-dom/client
