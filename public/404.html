@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; URL=/" />
+    <script>
+      // Redirect any 404 errors to the main index.html
+      var redirect = '/';
+      if (window.location.pathname !== '/') {
+        redirect += '?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+      }
+      window.location.href = redirect;
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
