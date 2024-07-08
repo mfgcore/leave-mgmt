@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useUser } from '../UserContext';
 import './LeaveBalance.css';
 import RequestOverview from './RequestOverview';
 import { getLeaveBalance } from '../services/leaveService';
-import useFetch from '../hooks/useFetch';
 
 const LeaveBalance = () => {
-  const { data: balanceData, loading, error } = useFetch(getLeaveBalance);
+  const { user, loading: userLoading } = useUser();
+  const [leaveBalance, setLeaveBalance] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading leave balance</div>;
+  useEffect(() => {
+    if (user?.token) {
+      console.log('Fetching leave balance with token:', user.token);
+      const fetchLeaveBalance = async () => {
+        try {
+          const response = await getLeaveBalance(user.token);
+          setLeaveBalance(response.data);
+          console.log('Leave balance fetched:', response.data);
+        } catch (error) {
+          setError('Error fetching leave balance');
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchLeaveBalance();
+    } else {
+      setLoading(false);
+    }
+  }, [user]);
+
+  if (userLoading || loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="leave-balance">
@@ -24,8 +48,8 @@ const LeaveBalance = () => {
           </tr>
         </thead>
         <tbody>
-          {balanceData.length > 0 ? (
-            balanceData.map((item, index) => (
+          {leaveBalance && leaveBalance.length > 0 ? (
+            leaveBalance.map((item, index) => (
               <tr key={index}>
                 <td>{item.leaveType}</td>
                 <td>{item.balance}</td>

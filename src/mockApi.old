@@ -1,3 +1,4 @@
+// src/mockApi.js
 import { setupWorker } from 'msw/browser';
 import { http, HttpResponse } from 'msw';
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LeaveRequest.css';
@@ -12,7 +13,6 @@ const LeaveRequest = () => {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [reason, setReason] = useState('');
-  const [approver, setApprover] = useState('Supervisor');
   const [note, setNote] = useState('');
   const [inputHours, setInputHours] = useState('');
   const [files, setFiles] = useState([]);
@@ -21,6 +21,30 @@ const LeaveRequest = () => {
   const [selectedLeaveBalance, setSelectedLeaveBalance] = useState('');
 
   useEffect(() => {
+    const calculateInputHours = () => {
+      if (duration === 'moreThanOneDay') {
+        if (startDate && endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          const diffInTime = end - start;
+          const diffInDays = diffInTime / (1000 * 3600 * 24) + 1;
+          setInputHours(`${diffInDays * 8} hours`);
+        } else {
+          setInputHours('');
+        }
+      } else {
+        if (startDate && startTime && endTime) {
+          const start = new Date(`${startDate}T${startTime}`);
+          const end = new Date(`${startDate}T${endTime}`);
+          const diffInTime = end - start;
+          const diffInHours = diffInTime / (1000 * 3600);
+          setInputHours(`${diffInHours} hours`);
+        } else {
+          setInputHours('');
+        }
+      }
+    };
+
     calculateInputHours();
   }, [startDate, endDate, startTime, endTime, duration]);
 
@@ -47,30 +71,6 @@ const LeaveRequest = () => {
 
     if (duration === 'oneDayOrLess') {
       setEndDate(newStartDate);
-    }
-  };
-
-  const calculateInputHours = () => {
-    if (duration === 'moreThanOneDay') {
-      if (startDate && endDate) {
-        const start = new Date(startDate);
-        const end = new Date(endDate);
-        const diffInTime = end - start;
-        const diffInDays = diffInTime / (1000 * 3600 * 24) + 1;
-        setInputHours(`${diffInDays * 8} hours`);
-      } else {
-        setInputHours('');
-      }
-    } else {
-      if (startDate && startTime && endTime) {
-        const start = new Date(`${startDate}T${startTime}`);
-        const end = new Date(`${startDate}T${endTime}`);
-        const diffInTime = end - start;
-        const diffInHours = diffInTime / (1000 * 3600);
-        setInputHours(`${diffInHours} hours`);
-      } else {
-        setInputHours('');
-      }
     }
   };
 
@@ -183,7 +183,7 @@ const LeaveRequest = () => {
             </label>
             <label>
               Approver:
-              <input type="text" value={approver} readOnly />
+              <input type="text" value="Supervisor" readOnly />
             </label>
             <label>
               New Note:

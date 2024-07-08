@@ -1,9 +1,41 @@
 import axios from 'axios';
-import API_BASE_URL from '../api';
 
-const getLeaveBalance = () => axios.get(`${API_BASE_URL}/api/leave-balance`);
-const getRequestOverview = () => axios.get(`${API_BASE_URL}/api/request-overview`);
-const getLeaveTypes = () => axios.get(`${API_BASE_URL}/api/leave-types`);
-const postLeaveRequest = (data) => axios.post(`${API_BASE_URL}/api/leave-request`, data);
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000';
 
-export { getLeaveBalance, getRequestOverview, getLeaveTypes, postLeaveRequest };
+export const getLeaveBalance = (token) => {
+  return axios.get(`${API_BASE_URL}/api/leave-balance`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export const getRequestOverview = (token) => {
+  return axios.get(`${API_BASE_URL}/api/request-overview`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export const getLeaveTypes = () => {
+  return axios.get(`${API_BASE_URL}/api/leave-types`);
+};
+
+export const postLeaveRequest = (data, token) => {
+  return axios.post(`${API_BASE_URL}/api/leave-request`, data, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export const verifyToken = (token) => {
+  return axios.get(`${API_BASE_URL}/verify-token`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+// Mock implementation for refreshToken
+export const refreshToken = async () => {
+  // Simulate a token refresh operation
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ token: 'new_fake_token' });
+    }, 1000);
+  });
+};
