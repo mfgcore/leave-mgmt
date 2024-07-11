@@ -25,6 +25,7 @@ export const postLeaveRequest = (data, token) => {
 };
 
 export const verifyToken = (token) => {
+  console.log('Verifying token:', token);
   return axios.get(`${API_BASE_URL}/verify-token`, {
     headers: { Authorization: `Bearer ${token}` },
   });

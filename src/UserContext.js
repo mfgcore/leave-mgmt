@@ -9,13 +9,12 @@ export const UserProvider = ({ children }) => {
 
   const handleTokenVerification = async (token) => {
     try {
-      console.log('Verifying token:', token);
-      const response = await verifyToken(token);
-      setUser({ token, ...response.data });
+      const userData = await verifyToken(token);
+      setUser(userData);
     } catch (error) {
       localStorage.removeItem('token');
       setUser(null);
-      console.error('Token verification error:', error.message);
+      console.error('UserContext.js: Token verification error:', error.message);
     } finally {
       setLoading(false);
     }
@@ -23,7 +22,6 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log('Retrieved token from localStorage:', token);
     if (token) {
       handleTokenVerification(token);
     } else {
@@ -38,7 +36,7 @@ export const UserProvider = ({ children }) => {
         localStorage.setItem('token', newToken.token);
         handleTokenVerification(newToken.token);
       } catch (error) {
-        console.error('Token refresh error:', error.message);
+        console.error('UserContext.js: Token refresh error:', error.message);
       }
     }, 15 * 60 * 1000); // Refresh token every 15 minutes
 

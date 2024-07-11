@@ -11,11 +11,12 @@ const LeaveBalance = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (user?.token) {
-      console.log('Fetching leave balance with token:', user.token);
+    //if (user?.token) {
+      //console.log('Fetching leave balance with token:', user.token);
       const fetchLeaveBalance = async () => {
         try {
-          const response = await getLeaveBalance(user.token);
+          //const response = await getLeaveBalance(user.token);
+          const response = await getLeaveBalance();
           setLeaveBalance(response.data);
           console.log('Leave balance fetched:', response.data);
         } catch (error) {
@@ -26,9 +27,9 @@ const LeaveBalance = () => {
       };
 
       fetchLeaveBalance();
-    } else {
-      setLoading(false);
-    }
+   // } else {
+   //   setLoading(false);
+    //}
   }, [user]);
 
   if (userLoading || loading) return <div>Loading...</div>;

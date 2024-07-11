@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Import the CSS file
+import './Login.css'; // Ensure you have this CSS file for styling
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -12,8 +12,11 @@ const Login = () => {
     // Simulate a login process
     const fakeToken = 'fake-token'; // Replace this with actual authentication logic
     localStorage.setItem('token', fakeToken);
+    console.log('Login.js: Token set in localStorage from login:', fakeToken);
     navigate('/leave-balance'); // Redirect to leave balance after login
   };
+
+  console.log('Login.js: Rendering Login component');
 
   return (
     <div className="login-container">
