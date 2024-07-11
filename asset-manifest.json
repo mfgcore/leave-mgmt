@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/leave-mgmt/static/css/main.6b907276.css",
-    "main.js": "/leave-mgmt/static/js/main.b336ca9e.js",
+    "main.js": "/leave-mgmt/static/js/main.ed354931.js",
     "static/js/494.1f72040f.chunk.js": "/leave-mgmt/static/js/494.1f72040f.chunk.js",
     "static/js/453.5821fda0.chunk.js": "/leave-mgmt/static/js/453.5821fda0.chunk.js",
-    "static/js/16.079a1b04.chunk.js": "/leave-mgmt/static/js/16.079a1b04.chunk.js",
+    "static/js/16.bb52d5d9.chunk.js": "/leave-mgmt/static/js/16.bb52d5d9.chunk.js",
     "index.html": "/leave-mgmt/index.html",
     "main.6b907276.css.map": "/leave-mgmt/static/css/main.6b907276.css.map",
-    "main.b336ca9e.js.map": "/leave-mgmt/static/js/main.b336ca9e.js.map",
+    "main.ed354931.js.map": "/leave-mgmt/static/js/main.ed354931.js.map",
     "494.1f72040f.chunk.js.map": "/leave-mgmt/static/js/494.1f72040f.chunk.js.map",
     "453.5821fda0.chunk.js.map": "/leave-mgmt/static/js/453.5821fda0.chunk.js.map",
-    "16.079a1b04.chunk.js.map": "/leave-mgmt/static/js/16.079a1b04.chunk.js.map"
+    "16.bb52d5d9.chunk.js.map": "/leave-mgmt/static/js/16.bb52d5d9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b907276.css",
-    "static/js/main.b336ca9e.js"
+    "static/js/main.ed354931.js"
   ]
 }
