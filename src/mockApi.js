@@ -23,7 +23,7 @@ const handlers = [
   http.post('/api/leave-request', (req) => {
     return HttpResponse.json({ message: 'Leave request submitted successfully' });
   }),
-  http.get('/verify-token', (req) => {
+  http.get('/api/verify-token', (req) => {
     console.log('Intercepted /verify-token', http.url);
     return HttpResponse.json({
       name: 'Test User',
