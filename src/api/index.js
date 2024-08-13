@@ -1,10 +1,11 @@
 const API_BASE_URL = process.env.REACT_APP_USE_MOCK_API === 'true'
-  ? ''
+  ? process.env.REACT_APP_API_BASE_URL
   : 'https://your-real-api.com';
 
 export default API_BASE_URL;
 
 export const verifyToken = async (token) => {
+  console.log("VerifyingToken: ", API_BASE_URL)
   try {
     const response = await fetch(`${API_BASE_URL}/api/verify-token`, {
       method: 'POST',

@@ -24,6 +24,7 @@ const handlers = [
     return HttpResponse.json({ message: 'Leave request submitted successfully' });
   }),
   http.get('/verify-token', (req) => {
+    console.log('Intercepted /verify-token', http.url);
     return HttpResponse.json({
       name: 'Test User',
       employeeId: '123456',
