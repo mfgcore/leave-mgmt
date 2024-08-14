@@ -42,8 +42,7 @@ const worker = setupWorker(...handlers);
 export default function initializeMockApi() {
   console.log('Initializing Mock API...');
   const isProduction = process.env.NODE_ENV === 'production';
-  //const serviceWorkerUrl = isProduction ? '/leave-mgmt/mockServiceWorker.js' : '/mockServiceWorker.js';
-  const serviceWorkerUrl = '/mockServiceWorker.js';
+  const serviceWorkerUrl = isProduction ? '/leave-mgmt/mockServiceWorker.js' : '/mockServiceWorker.js';
 
   return worker.start({
     serviceWorker: {
