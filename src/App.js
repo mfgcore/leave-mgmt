@@ -10,8 +10,8 @@ import NotFound from './components/NotFound';
 const App = () => {
   const { user, loading, setUser } = useUser();
   const [error, setError] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false); // Add authenticated state
   const location = useLocation();
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
     console.log('useEffect in App.js triggered');
@@ -20,54 +20,51 @@ const App = () => {
     const tokenFromLocalStorage = localStorage.getItem('token');
     const token = tokenFromUrl || tokenFromLocalStorage;
 
-    console.log('App.js - Token for verification:', token);
+    console.log('Token for verification:', token);
 
     if (token) {
       const verifyUserToken = async () => {
-        console.log('App.js - Verifying token:', token);
+        console.log('Verifying token:', token);
         try {
           const response = await verifyToken(token);
           setUser({ token, ...response.data });
+          setAuthenticated(true); // Set authenticated to true on successful verification
           if (tokenFromUrl) {
             localStorage.setItem('token', tokenFromUrl);
-            console.log('App.js - Token set in localStorage from URL:', tokenFromUrl);
+            console.log('Token set in localStorage from URL:', tokenFromUrl);
           }
-          console.log('App.js - User set in context:', response.data);
+          console.log('User set in context:', response.data);
         } catch (error) {
           setError('Invalid or expired token');
           localStorage.removeItem('token');
-          console.error('App.js - Token verification error:', error);
-        } finally {
-          setIsFirstLoad(false);
+          console.error('Token verification error:', error);
         }
       };
 
       verifyUserToken();
     } else {
       setError('No token provided');
-      setIsFirstLoad(false);
     }
   }, [location.search, setUser]);
 
-  console.log('App.js - App rendering with loading:', loading, 'error:', error, 'user:', user);
+  console.log('App rendering with loading:', loading, 'error:', error, 'user:', user);
 
-  if (loading || isFirstLoad) {
-    console.log('App.js - Rendering loading state...');
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (error && !user) {
-    console.log('App.js - Redirecting to login due to error:', error);
-    return <Navigate replace to="/login" />;
+  if (error && !user && !authenticated) {
+    console.log('Redirecting to login due to error:', error);
+    //return <Navigate replace to="/login" />;
   }
 
   return (
     <div key={location.key}>
       <Routes>
         <Route path="/" element={<Navigate replace to="/leave-balance" />} />
-        <Route path="/leave-balance" element={user ? <LeaveBalance /> : <Navigate replace to="/login" />} />
-        <Route path="/leave-request" element={user ? <LeaveRequest /> : <Navigate replace to="/login" />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/leave-balance" element={authenticated ? <LeaveBalance /> : <Navigate replace to="/login" />} />
+        <Route path="/leave-request" element={authenticated ? <LeaveRequest /> : <Navigate replace to="/login" />} />
+        <Route path="/login" element={<Login setAuthenticated={setAuthenticated} />} /> {/* Pass setAuthenticated */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

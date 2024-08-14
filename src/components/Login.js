@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; // Ensure you have this CSS file for styling
 
-const Login = () => {
+const Login = ({ setAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simulate a login process
-    const fakeToken = 'fake-token'; // Replace this with actual authentication logic
-    localStorage.setItem('token', fakeToken);
-    console.log('Login.js: Token set in localStorage from login:', fakeToken);
-    navigate('/leave-balance'); // Redirect to leave balance after login
-  };
 
-  console.log('Login.js: Rendering Login component');
+    // Replace this with your actual login logic
+    if (username === 'test' && password === 'password') {
+      const fakeToken = 'fake-jwt-token';
+      localStorage.setItem('token', fakeToken);
+      setAuthenticated(true); // Update authenticated state
+      navigate('/'); // Redirect to the home or another protected route
+    } else {
+      alert('Invalid credentials');
+    }
+  };
 
   return (
     <div className="login-container">
